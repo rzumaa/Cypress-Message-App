@@ -5,13 +5,12 @@ describe('Logowanie', () => {
         cy.contains('h1', 'Zaloguj się!')
             .should('be.visible');
 
-        cy.get('input[name="email"]')
-            .type('test@gmail.com')
-            .should('be.value', 'test@gmail.com' );
-
-        cy.get('input[name="password"]')
-            .type('12345678')
-            .should('be.value', '12345678');
+        cy.fixture('testdata').then(function (testdata) {
+            this.testdata = testdata;
+            cy.get('input[name="email"]').type(this.testdata.email);
+            cy.get('input[name="password"]').type(this.testdata.password);
+            cy.get('button[type=submit]').as('sbmitBtn').click();
+        });
         cy.contains('.MuiButton-label', 'Zaloguj się')
             .click();
     });
