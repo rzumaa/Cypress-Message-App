@@ -6,14 +6,12 @@ describe('Create Chat', () => {
         cy.contains('h1', 'Zaloguj się!')
             .should('be.visible');
 
-        cy.get('input[name="email"]')
-            .type('test@gmail.com')
-            .should('be.value', 'test@gmail.com' );
-
-        cy.get('input[name="password"]')
-            .type('12345678')
-            .should('be.value', '12345678');
-
+        cy.fixture('LoginData').then(function (LoginData) {
+            this.LoginData = LoginData;
+            cy.get('input[name="email"]').type(this.LoginData.email);
+            cy.get('input[name="password"]').type(this.LoginData.password);
+            cy.get('button[type=submit]').as('sbmitBtn').click();
+        });
         cy.contains('.MuiButton-label', 'Zaloguj się')
             .click();
 

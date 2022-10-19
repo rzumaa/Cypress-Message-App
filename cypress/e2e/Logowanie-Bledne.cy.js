@@ -5,14 +5,14 @@ describe('Logowanie', () => {
         cy.contains('h1', 'Zaloguj się!')
             .should('be.visible');
 
-        cy.fixture('testdata').then(function (testdata) {
-            this.testdata = testdata;
+        cy.fixture('LoginData').then(function (LoginData) {
+            this.LoginData = LoginData;
             cy.get('input[name="email"]')
-                .type(this.testdata.email)
-                .should('be.value', 'tesst@gmail.com' );;
+                .type(this.LoginData.email)
+                .should('be.value', 'tesst@gmail.com' );
 
             cy.get('input[name="password"]')
-                .type(this.testdata.password);
+                .type(this.LoginData.password);
 
             cy.get('button[type=submit]')
                 .as('sbmitBtn').click();
