@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const passwordResetSchema = yup.object().shape({
-  email: yup
+    passwordreset: yup
     .string()
     .required('E-mail jest wymagany')
     .email('Podany adres jest niepoprawny'),
@@ -43,7 +43,7 @@ const PasswordReset = () => {
 
   const handleReset = async (data) => {
     await auth
-      .sendPasswordResetEmail(data.email)
+      .sendPasswordResetEmail(data.passwordreset)
       .then(() => {
         alertify.alert(`Reset hasła`, `Email został wysłany!`);
         reset();
@@ -65,9 +65,9 @@ const PasswordReset = () => {
       </p>
       <form onSubmit={handleSubmit(handleReset)}>
         <Input icon={<Email />}
-               error={errors.email?.message}>
+               error={errors.passwordreset?.message}>
           <input type='text'
-                 placeholder='E-mail' {...register('email')} />
+                 placeholder='E-mail' {...register('passwordreset')} />
         </Input>
         <Button
           style={{

@@ -8,6 +8,6 @@ describe('Logowanie', () => {
 
         cy.get('span[role="button"]')
             .click();
-        cy.get('input[name="email"]').next().type('test@gmail.com');
+        cy.get('input[name="passwordreset"]').type('test@gmail.com');
     });
 });
