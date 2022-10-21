@@ -1,16 +1,16 @@
 describe('Chat', () => {
-    it('Chat', () => {
-        cy.visit('/login');
+            it('Chat', () => {
+                cy.visit('/login');
 
-        cy.contains('h1', 'Zaloguj się!')
-            .should('be.visible');
+                cy.contains('h1', 'Zaloguj się!')
+                    .should('be.visible');
 
-        cy.fixture('LoginData').then(function (LoginData) {
-            this.LoginData = LoginData;
-            cy.get('input[name="email"]').type(this.LoginData.email).should('be.value', 'test@gmail.com');
-            cy.get('input[name="password"]').type(this.LoginData.password).should('be.value', '12345678');
-            cy.get('button[type=submit]').as('sbmitBtn').click();
-        });
+                cy.fixture('LoginData').then(function (LoginData) {
+                    this.LoginData = LoginData;
+                    cy.get('input[name="email"]').type(this.LoginData.email).should('be.value', 'test@gmail.com');
+                    cy.get('input[name="password"]').type(this.LoginData.password).should('be.value', '12345678');
+                    cy.get('button[type=submit]').as('sbmitBtn').click();
+                });
 
         cy.contains('span', 'Ustawienia').click();
         cy.get('button[title="Edytuj zdjęcie"]').click();
@@ -36,6 +36,7 @@ describe('Chat', () => {
             cy.get('input[placeholder="Potwierdź nowe hasło"]').type(this.LoginData.Newpassword);
         });
         cy.contains('button', 'Zmień hasło').click();
+
 
     });
 });
