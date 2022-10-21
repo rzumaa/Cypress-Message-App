@@ -8,17 +8,16 @@ describe('Logowanie', () => {
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
             cy.get('input[name="email"]')
-                .type(this.LoginData.email)
-                .should('be.value', 'tesst@gmail.com' );
+                .type(this.LoginData.wrongemail);
+                //.should('be.value', 'tesst@gmail.com' );
 
             cy.get('input[name="password"]')
-                .type(this.LoginData.password);
+                .type(this.LoginData.wrongpassword);
 
             cy.get('button[type=submit]')
                 .as('sbmitBtn').click();
         });
-        cy.contains('.MuiButton-label', 'Zaloguj się')
-            .click();
+
     });
 });
 
