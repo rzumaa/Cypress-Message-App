@@ -7,8 +7,8 @@ describe('Chat', () => {
 
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
-            cy.get('input[name="email"]').type(this.LoginData.email).should('be.value', 'test@gmail.com');
-            cy.get('input[name="password"]').type(this.LoginData.password).should('be.value', '12345678');
+            cy.get('input[name="email"]').type(this.LoginData.email)//.should('be.value', 'test@gmail.com');
+            cy.get('input[name="password"]').type(this.LoginData.password)//.should('be.value', '12345678');
             cy.get('button[type=submit]').as('sbmitBtn').click();
         });
 

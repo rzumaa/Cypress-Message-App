@@ -95,7 +95,7 @@ const PasswordUpdate = () => {
                error={errors.password?.message}>
           <input
             type='password'
-            placeholder='Stere hasło'
+            placeholder='Stare hasło'
             {...register('password')}
           />
         </Input>

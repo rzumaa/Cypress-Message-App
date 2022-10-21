@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
   const [userExist, setUserExist] = useState(false);
+  const [newName, setNewName] = useState('');
   const dispatch = useDispatch();
 
   const userDocExist = async (uid) => {
@@ -33,6 +34,7 @@ const AuthProvider = ({ children }) => {
     await db.collection('users').doc(uid).set({
       userName: name,
     });
+   setNewName(name);
   };
 
   const signUpWithEmail = (email, password) =>
@@ -88,7 +90,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       cancel = false;
     };
-  }, []);
+  }, [newName]);
 
   const value = {
     currentUser,
