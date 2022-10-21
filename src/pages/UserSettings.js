@@ -132,6 +132,7 @@ const UserSettings = () => {
         left={
           <ChatItem
             name='Ustawienia użytkownika'
+            avatar={currentUser.photoURL}
             // info={
             //   roomName
             //     ? displayRoomInfo(lastSeen)
