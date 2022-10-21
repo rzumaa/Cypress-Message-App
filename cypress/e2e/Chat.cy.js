@@ -5,28 +5,25 @@ describe('Chat', () => {
         cy.contains('h1', 'Zaloguj się!')
             .should('be.visible');
 
-        cy.get('input[name="email"]')
-            .type('test@gmail.com')
-            .should('be.value', 'test.devcomm@gmail.com' );
+        cy.fixture('LoginData').then(function (LoginData) {
+            this.LoginData = LoginData;
+            cy.get('input[name="email"]').type(this.LoginData.email).should('be.value', 'kochanska.devcomm@gmail.com');
+            cy.get('input[name="password"]').type(this.LoginData.password).should('be.value', '12345678');
+            cy.get('button[type=submit]').as('sbmitBtn').click();
+        });
 
-        cy.get('input[name="password"]')
-            .type('12345678')
-            .should('be.value', '12345678');
-
-        cy.contains('.MuiButton-label', 'Zaloguj się')
-            .click();
+        cy.contains('.MuiButton-label', 'Zaloguj się').click();
 
         cy.get('a[href="/room/JVFxDNQ0fz4X2BvEJTUE"]').click();
 
-        //cy.get('input[type=file').attachFile("/golden.png");
-
-        cy.get('svg[class="MuiSvgIcon-root"]').click();
+        cy.get('button[title="Dodaj załącznik"]').click();
+        cy.get('input[type=file').attachFile("/golden.png");
+        cy.contains('span', 'Wyślij').click();
         cy.get('input[placeholder="Napisz wiadomość"]')
             .type('test wiadomosci do wyslania')
             .should('be.value', 'test wiadomosci do wyslania');
 
         cy.get('span[title="Wyślij"]').click();
-
 
     });
 });
