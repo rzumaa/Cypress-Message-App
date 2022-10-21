@@ -65,6 +65,7 @@ const EmojiPicker = () => {
     //   message: message + emojiObject.emoji,
     // });
     dispatch(setMessage(message + emojiObject.emoji));
+    dispatch(toggleEmojiPicker());
   };
 
   return (
