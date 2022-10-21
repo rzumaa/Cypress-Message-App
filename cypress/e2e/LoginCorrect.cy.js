@@ -13,5 +13,7 @@ describe('Logowanie', () => {
     });
     cy.contains('.MuiButton-label', 'Zaloguj się')
         .click();
+    cy.wait(2000);
+    cy.get('button[title="Wyloguj"]').click();
 });
 });
