@@ -1,5 +1,5 @@
 describe('Chat', () => {
-    it('Chat', () => {
+    it('Chat edit', () => {
         cy.visit('/login');
 
         cy.contains('h1', 'Zaloguj się!')
