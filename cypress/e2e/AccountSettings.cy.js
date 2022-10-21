@@ -30,10 +30,10 @@ describe('Chat', () => {
 
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
-        cy.get('input[placeholder="E-mail"]').type(this.LoginData.email);
-        cy.get('input[placeholder="Stare hasło"]').type(this.LoginData.password);
-        cy.get('input[placeholder="Nowe hasło"]').type(this.LoginData.Newpassword);
-        cy.get('input[placeholder="Potwierdź nowe hasło"]').type(this.LoginData.Newpassword);
+            cy.get('input[placeholder="E-mail"]').type(this.LoginData.email);
+            cy.get('input[placeholder="Stare hasło"]').type(this.LoginData.password);
+            cy.get('input[placeholder="Nowe hasło"]').type(this.LoginData.Newpassword);
+            cy.get('input[placeholder="Potwierdź nowe hasło"]').type(this.LoginData.Newpassword);
         });
         cy.contains('button', 'Zmień hasło').click();
 
