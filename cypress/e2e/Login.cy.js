@@ -11,6 +11,7 @@ describe('Login into the application', () => {
             cy.get('input[name="email"]').type(this.LoginData.email);
             cy.get('input[name="password"]').type(this.LoginData.password);
        });
+       
         cy.get('button[type=submit]').as('sbmitBtn').click();
         cy.contains('.MuiButton-label', 'Zaloguj się').click();
         cy.wait(5000);
