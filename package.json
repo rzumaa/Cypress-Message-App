@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "cy-verify-downloads": "^0.1.11",
-    "cypress": "^10.10.0",
+    "cypress": "^10.11.0",
     "cypress-file-upload": "^5.0.8",
     "eslint": "^7.27.0",
     "eslint-config-airbnb": "^18.2.1",

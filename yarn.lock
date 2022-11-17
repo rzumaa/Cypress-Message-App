@@ -4870,10 +4870,10 @@
   "resolved" "https://registry.npmjs.org/cypress-file-upload/-/cypress-file-upload-5.0.8.tgz"
   "version" "5.0.8"
 
-"cypress@^10.10.0", "cypress@>3.0.0":
-  "integrity" "sha512-bU8r44x1NIYAUNNXt3CwJpLOVth7HUv2hUhYCxZmgZ1IugowDvuHNpevnoZRQx1KKOEisLvIJW+Xen5Pjn41pg=="
-  "resolved" "https://registry.npmjs.org/cypress/-/cypress-10.10.0.tgz"
-  "version" "10.10.0"
+"cypress@^10.11.0", "cypress@>3.0.0":
+  "integrity" "sha512-lsaE7dprw5DoXM00skni6W5ElVVLGAdRUUdZjX2dYsGjbY/QnpzWZ95Zom1mkGg0hAaO/QVTZoFVS7Jgr/GUPA=="
+  "resolved" "https://registry.npmjs.org/cypress/-/cypress-10.11.0.tgz"
+  "version" "10.11.0"
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
