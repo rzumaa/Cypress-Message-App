@@ -11,8 +11,8 @@ describe('Login into the application', () => {
             cy.get('input[name="email"]').type(this.LoginData.email);
             cy.get('input[name="password"]').type(this.LoginData.password);
        });
-       
-        cy.get('button[type=submit]').as('sbmitBtn').click();
+
+        cy.get('button[type=submit]').click();
         cy.contains('.MuiButton-label', 'Zaloguj się').click();
         cy.wait(5000);
         cy.get('button[title="Wyloguj"]').click();
@@ -25,7 +25,7 @@ describe('Login into the application', () => {
             cy.get('input[name="password"]').type(this.LoginData.wrongpassword)//.should('be.value', '123323');
         });
     
-        cy.get('button[type=submit]').as('sbmitBtn').click();
+        cy.get('button[type=submit]').click();
         cy.wait(3000);
     });
     it('Should error for empty password', () => {
@@ -34,7 +34,7 @@ describe('Login into the application', () => {
             cy.get('input[name="email"]').type(this.LoginData.email);   
         });
 
-        cy.get('button[type=submit]').as('sbmitBtn').click();
+        cy.get('button[type=submit]').click();
         cy.contains('Hasło jest wymagane').should('be.visible');
 
         cy.wait(3000);
@@ -46,7 +46,7 @@ describe('Login into the application', () => {
             cy.get('input[name="password"]').type(this.LoginData.password)   
         });
 
-        cy.get('button[type=submit]').as('sbmitBtn').click();
+        cy.get('button[type=submit]').click();
         cy.contains('E-mail jest wymagany').should('be.visible');
         cy.wait(3000);
     });
@@ -58,7 +58,7 @@ describe('Login into the application', () => {
             cy.get('input[name="password"]').type('12345').should('have.length', 8);
         });
         
-        cy.get('button[type=submit]').as('sbmitBtn').click()
+        cy.get('button[type=submit]').click();
         cy.contains('Hasło musi zawierać przynajmniej 8 znaków').should('be.visible')
         cy.wait(3000);
     });
