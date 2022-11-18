@@ -1,11 +1,12 @@
 describe('Login into the application', () => {
     beforeEach(() => {
         cy.viewport(1920,1080);
+        // Visit signin page on
         cy.visit('/login');
         cy.contains('h1', 'Zaloguj się!').should('be.visible');
     })
 
-   it('Login is correct', () => {
+   it('Login is correct', function ()  {
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
             cy.get('input[name="email"]').type(this.LoginData.email);
@@ -14,21 +15,27 @@ describe('Login into the application', () => {
 
         cy.get('button[type=submit]').click();
         cy.contains('.MuiButton-label', 'Zaloguj się').click();
+
+        cy.location('href').should('include', 'http://localhost:3000/')
+        cy.location().its('href').should('include', 'http://localhost:3000/')
+        cy.url().should('include', 'http://localhost:3000/')
+
         cy.wait(5000);
         cy.get('button[title="Wyloguj"]').click();
     });
 
-    it('Should error for an invalid user', () => {
+    it('Should error for an invalid user', function () {
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
-            cy.get('input[name="email"]').type(this.LoginData.wrongemail)//.should('be.value', this.LoginData.email );
-            cy.get('input[name="password"]').type(this.LoginData.wrongpassword)//.should('be.value', '123323');
+            cy.get('input[name="email"]').type(this.LoginData.wrongemail)
+            cy.get('input[name="password"]').type(this.LoginData.wrongpassword)
         });
     
         cy.get('button[type=submit]').click();
         cy.wait(3000);
     });
-    it('Should error for empty password', () => {
+
+    it('Should error for empty password', function () {
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
             cy.get('input[name="email"]').type(this.LoginData.email);   
@@ -40,7 +47,7 @@ describe('Login into the application', () => {
         cy.wait(3000);
     });
 
-    it('Should error for empty login', () => {
+    it('Should error for empty login', function () {
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
             cy.get('input[name="password"]').type(this.LoginData.password)   
@@ -51,7 +58,7 @@ describe('Login into the application', () => {
         cy.wait(3000);
     });
 
-    it('Login with a short password', () => {
+    it('Login with a short password', function () {
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
             cy.get('input[name="email"]').type(this.LoginData.email)
@@ -63,7 +70,7 @@ describe('Login into the application', () => {
         cy.wait(3000);
     });
 
-    it('Password Reset', () => {
+    it('Password Reset', function ()  {
         cy.get('span[role="button"]').click();
         cy.get('input[name="passwordreset"]').type('test@gmail.com');
         cy.contains('button', 'Resetuj').click();
