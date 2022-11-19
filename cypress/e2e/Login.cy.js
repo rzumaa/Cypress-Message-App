@@ -4,6 +4,7 @@ describe('Login into the application', () => {
         // Visit signin page on
         cy.visit('/login');
         cy.contains('h1', 'Zaloguj się!').should('be.visible');
+        cy.get('button[type=submit]').as('smbitBtn');
     })
 
    it('Login is correct', function ()  {
@@ -13,8 +14,7 @@ describe('Login into the application', () => {
             cy.get('input[name="password"]').type(this.LoginData.password);
        });
 
-        cy.get('button[type=submit]').click();
-        cy.contains('.MuiButton-label', 'Zaloguj się').click();
+        cy.get('@smbitBtn').click();
 
         cy.location('href').should('include', 'http://localhost:3000/')
         cy.location().its('href').should('include', 'http://localhost:3000/')
@@ -30,8 +30,8 @@ describe('Login into the application', () => {
             cy.get('input[name="email"]').type(this.LoginData.wrongemail)
             cy.get('input[name="password"]').type(this.LoginData.wrongpassword)
         });
-    
-        cy.get('button[type=submit]').click();
+        
+        cy.get('@smbitBtn').click();
         cy.wait(3000);
     });
 
@@ -41,7 +41,7 @@ describe('Login into the application', () => {
             cy.get('input[name="email"]').type(this.LoginData.email);   
         });
 
-        cy.get('button[type=submit]').click();
+        cy.get('@smbitBtn').click();
         cy.contains('Hasło jest wymagane').should('be.visible');
 
         cy.wait(3000);
@@ -53,7 +53,7 @@ describe('Login into the application', () => {
             cy.get('input[name="password"]').type(this.LoginData.password)   
         });
 
-        cy.get('button[type=submit]').click();
+        cy.get('@smbitBtn').click();
         cy.contains('E-mail jest wymagany').should('be.visible');
         cy.wait(3000);
     });
@@ -64,8 +64,8 @@ describe('Login into the application', () => {
             cy.get('input[name="email"]').type(this.LoginData.email)
             cy.get('input[name="password"]').type('12345').should('have.length', 8);
         });
-        
-        cy.get('button[type=submit]').click();
+       
+        cy.get('@smbitBtn').click();
         cy.contains('Hasło musi zawierać przynajmniej 8 znaków').should('be.visible')
         cy.wait(3000);
     });
