@@ -15,9 +15,8 @@ describe('Login into the application', () => {
        });
 
         cy.get('@smbitBtn').click();
-
-        cy.location('href').should('include', 'http://localhost:3000/')
-        cy.location().its('href').should('include', 'http://localhost:3000/')
+        
+        // Should be on a new URL
         cy.url().should('include', 'http://localhost:3000/')
 
         cy.wait(5000);
@@ -65,7 +64,7 @@ describe('Login into the application', () => {
             cy.get('input[name="password"]').type('12345').should('have.length', 8);
         });
        
-        cy.get('@smbitBtn').click();
+        cy.get('@smbitBtn').click();  
         cy.contains('Hasło musi zawierać przynajmniej 8 znaków').should('be.visible')
         cy.wait(3000);
     });
