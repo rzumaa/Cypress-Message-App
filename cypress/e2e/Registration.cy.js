@@ -67,6 +67,7 @@ describe('User registration into application in form', () => {
         cy.contains('Hasło jest wymagane').should('be.visible');
         cy.contains('Potwierdź hasło').should('be.visible');
      });
+     
      it('Should error for empty firstname', function () {
 
         cy.fixture('RegistrationData').then(function (RegistrationData) {
@@ -138,7 +139,7 @@ describe('User registration into application in form', () => {
         cy.get('@smbitBtn').click();
         cy.contains('Podany adres jest niepoprawny').should('be.visible');
      });
-     
+
      it('Should error for  email without "gmail"', function () {
 
         cy.fixture('RegistrationData').then(function (RegistrationData) {
