@@ -15,6 +15,7 @@ describe('Login into the application', () => {
        });
 
         cy.get('@smbitBtn').click();
+        cy.contains('Zalogowano pomyślnie!').should('be.visible')
         // Should be on a new URL
         cy.url().should('include', 'http://localhost:3000/')
 
