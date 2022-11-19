@@ -9,7 +9,7 @@ describe('rejestracja', () => {
         cy.get('button[type=submit]').as('smbitBtn');
     })
   
-    it('User registration into application in form', () => {
+    it('User registration into application in form', function () {
 
         cy.fixture('RegistrationData').then(function (RegistrationData) {
             this.RegistrationData = RegistrationData;
@@ -24,7 +24,7 @@ describe('rejestracja', () => {
      
     });
 
-     it('Should error for different password',() => {
+     it('Should error for different password', function () {
 
         cy.fixture('RegistrationData').then(function (RegistrationData) {
             this.RegistrationData = RegistrationData;
@@ -38,5 +38,33 @@ describe('rejestracja', () => {
         cy.get('@smbitBtn').click();
         cy.contains('Hasła muszą być takie same').should('be.visible');
      });  
-    
+   
+     it('Should error for empty confirm  password', function () {
+
+        cy.fixture('RegistrationData').then(function (RegistrationData) {
+            this.RegistrationData = RegistrationData;
+            cy.get('input[name="email"]').type(this.RegistrationData.email);
+            cy.get('input[name="firstName"]').type(this.RegistrationData.firstname);
+            cy.get('input[name="lastName"]').type(this.RegistrationData.lastname);
+            cy.get('input[name="password"]').type(this.RegistrationData.password);
+        });
+
+        cy.get('@smbitBtn').click();
+        cy.contains('Hasła muszą być takie same').should('be.visible');
+
+     });
+
+     it('Should error for empty passwords', function () {
+
+        cy.fixture('RegistrationData').then(function (RegistrationData) {
+            this.RegistrationData = RegistrationData;
+            cy.get('input[name="email"]').type(this.RegistrationData.email);
+            cy.get('input[name="firstName"]').type(this.RegistrationData.firstname);
+            cy.get('input[name="lastName"]').type(this.RegistrationData.lastname);
+        });
+
+        cy.get('@smbitBtn').click();
+        cy.contains('Hasło jest wymagane').should('be.visible');
+        cy.contains('Potwierdź hasło').should('be.visible');
+     });
 });
