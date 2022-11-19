@@ -3,9 +3,8 @@ describe('rejestracja', () => {
         cy.viewport(1920,1080);
         cy.visit('/login');
         cy.get('a[href="/registration"]').click();
-        cy.url().should('include', '/registration');
-        
         // Should be on a new URL 
+        cy.url().should('include', '/registration');
         cy.contains('h1', 'Zarejestruj się!').should('be.visible');
         cy.get('button[type=submit]').as('smbitBtn');
     })
