@@ -17,8 +17,9 @@ describe('rejestracja', () => {
             cy.get('input[name="password"]').type(this.RegistrationData.password);
             cy.get('input[name="passwordConfirm"]').type(this.RegistrationData.passwordConfirm);
         });
+
         cy.get('@smbitBtn').click();
-       // cy.contains('span[class="MuiButton-label"]', 'Zarejestruj się').click();
+     
     });
 
      it('Should error for different password',() => {
@@ -32,7 +33,7 @@ describe('rejestracja', () => {
             cy.get('input[name="passwordConfirm"]').type(this.RegistrationData.passwordConfirm2);
         });
 
-        cy.contains('span[class="MuiButton-label"]', 'Zarejestruj się').click();
+        cy.get('@smbitBtn').click();
         cy.contains('Hasła muszą być takie same').should('be.visible');
      });  
     
