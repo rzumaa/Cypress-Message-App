@@ -3,5 +3,6 @@
   "password": "12345678",
   "Newpassword": "test123456",
   "wrongemail": "tessst12@gmail.com",
-  "wrongpassword": "12345689"
+  "wrongpassword": "12345689",
+  "emailNew": "test2@gmail.com"
 }

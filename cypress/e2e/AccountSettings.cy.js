@@ -1,5 +1,5 @@
 describe('Account settings', function ()  {
-    before('Chat', () => {
+    before('Logging In - HTML Web Form', () => {
         cy.visit('/login');
         cy.contains('h1', 'Zaloguj się!').should('be.visible');
 
@@ -44,6 +44,23 @@ describe('Account settings', function ()  {
 
     });
 
+    it('Change address email', function (){
+
+        cy.get('button[title="Edytuj e-mail"]').click();
+        cy.get('#transition-modal-title').should('be.visible', 'Zmiana adresu E-mail');
+
+        cy.fixture('LoginData').then(function (LoginData) {
+            this.LoginData = LoginData;
+            cy.get('input[placeholder="E-mail"]').type(this.LoginData.emailNew);
+            cy.get('input[placeholder="Hasło"]').type(this.LoginData.password);
+            cy.get('input[placeholder="Nowy e-mail"]').type(this.LoginData.emailNew);
+            
+        });
+        
+        cy.contains('button', 'Aktualizuj email').click();
+
+    });
+
     it('Change password', function () { 
 
         cy.get('button[title="Edytuj hasło"]').click();
@@ -56,11 +73,13 @@ describe('Account settings', function ()  {
             cy.get('input[placeholder="Nowe hasło"]').type(this.LoginData.Newpassword);
             cy.get('input[placeholder="Potwierdź nowe hasło"]').type(this.LoginData.Newpassword);
         });
+
         cy.contains('button', 'Zmień hasło').click();
 
         // we should have a visible notice now
         cy.contains('Zaktualizowano pomyślnie').should('be.visible')
 
     });
+
 });
 
