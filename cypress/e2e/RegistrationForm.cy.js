@@ -36,6 +36,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible error now
         cy.contains('Hasła muszą być takie same').should('be.visible');
      });  
    
@@ -50,6 +52,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible error now
         cy.contains('Hasła muszą być takie same').should('be.visible');
 
      });
@@ -64,6 +68,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible errors now
         cy.contains('Hasło jest wymagane').should('be.visible');
         cy.contains('Potwierdź hasło').should('be.visible');
      });
@@ -79,6 +85,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible error now
         cy.contains('Imię jest wymagane').should('be.visible');
      });
 
@@ -93,6 +101,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible error now
         cy.contains('Nazwisko jest wymagane').should('be.visible');
      });
 
@@ -107,6 +117,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible error now
         cy.contains('E-mail jest wymagany').should('be.visible');
      });
 
@@ -122,6 +134,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible error now
         cy.contains('Podany adres jest niepoprawny').should('be.visible');
      });
 
@@ -137,6 +151,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible error now
         cy.contains('Podany adres jest niepoprawny').should('be.visible');
      });
 
@@ -152,6 +168,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible error now
         cy.contains('Podany adres jest niepoprawny').should('be.visible');
      });
 
@@ -167,6 +185,8 @@ describe('User registration into application in form', () => {
         });
 
         cy.get('@smbitBtn').click();
+
+        // we should have visible error now
         cy.contains('Podany adres jest niepoprawny').should('be.visible');
      });
 

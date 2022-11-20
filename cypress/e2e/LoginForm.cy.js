@@ -16,6 +16,8 @@ describe('Login into the application', () => {
        });
 
         cy.get('@smbitBtn').click();
+
+        //we should have a visible notice now
         cy.contains('Zalogowano pomyślnie!').should('be.visible');
         
         // Should be on a new URL
@@ -23,6 +25,8 @@ describe('Login into the application', () => {
 
         cy.wait(5000);
         cy.get('button[title="Wyloguj"]').click();
+
+        // we should have a visible notice now
         cy.contains('Wylogowano pomyślnie!').should('be.visible');
 
         // Should be on a new URL
@@ -40,8 +44,9 @@ describe('Login into the application', () => {
         
         cy.get('@smbitBtn').click();
        
-        // we should have visible errors now
+        // we should have visible error now
         cy.contains('There is no user record corresponding to this identifier. The user may have been deleted.').should('be.visible')
+      
         cy.contains('button', 'OK').click();
 
         // and still be on the same URL
@@ -59,7 +64,7 @@ describe('Login into the application', () => {
 
         cy.get('@smbitBtn').click();
 
-        // we should have visible errors now
+        // we should have visible error now
         cy.contains('Hasło jest wymagane').should('be.visible');
 
         // and still be on the same URL
@@ -77,7 +82,7 @@ describe('Login into the application', () => {
 
         cy.get('@smbitBtn').click();
 
-        // we should have visible errors now
+        // we should have visible error now
         cy.contains('E-mail jest wymagany').should('be.visible');
 
         // and still be on the same URL
@@ -96,7 +101,7 @@ describe('Login into the application', () => {
        
         cy.get('@smbitBtn').click(); 
 
-        // we should have visible errors now
+        // we should have visible error now
         cy.contains('Hasło musi zawierać przynajmniej 8 znaków').should('be.visible');
 
         // and still be on the same URL
