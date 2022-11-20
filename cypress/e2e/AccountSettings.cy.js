@@ -51,7 +51,7 @@ describe('Account settings', function ()  {
 
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
-            cy.get('input[placeholder="E-mail"]').type(this.LoginData.emailNew);
+            cy.get('input[placeholder="E-mail"]').type(this.LoginData.email);
             cy.get('input[placeholder="Hasło"]').type(this.LoginData.password);
             cy.get('input[placeholder="Nowy e-mail"]').type(this.LoginData.emailNew);
             
