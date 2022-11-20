@@ -7,7 +7,7 @@ describe('Chat', () => {
 
         cy.fixture('LoginData').then(function (LoginData) {
             this.LoginData = LoginData;
-            cy.get('input[name="email"]').type(this.LoginData.email).should('be.value', 'test@gmail.com');
+            cy.get('input[name="email"]').type(this.LoginData.email)
             cy.get('input[name="password"]').type(this.LoginData.password).should('be.value', '12345678');
             cy.get('button[type=submit]').as('sbmitBtn').click();
         });
@@ -19,6 +19,9 @@ describe('Chat', () => {
         cy.get('button[title="Dodaj załącznik"]').click();
         cy.get('input[type=file').attachFile("/golden.png");
         cy.contains('span', 'Wyślij').click();
+
+        // we should have a visible notice now
+        cy.contains('Plik wysłano').should('be.visible')
 
         cy.get('input[placeholder="Napisz wiadomość"]')
             .type('test wiadomosci do wyslania')
